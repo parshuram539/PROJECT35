@@ -1,6 +1,6 @@
 var balloon,balloonImage1,balloonImage2;
 var database;
-var position;
+var height;
 
 function preload(){
    bg =loadImage("Images/cityImage.png");
@@ -21,8 +21,8 @@ function setup() {
   balloon.addAnimation("hotAirBalloon",balloonImage1);
   balloon.scale=0.5;
 
-  var balloonposition=database.ref('balloon/position');
-  balloonposition.on("value",readHeight, showError);
+  var balloonHeight=database.ref('balloon/height');
+  balloonHeight.on("value",readHeight, showError);
 
 
 
@@ -60,7 +60,7 @@ function draw() {
 }
 
  function updateHeight(x,y){
-   database.ref('balloon/position').set({
+   database.ref('balloon/height').set({
      'x': height.x + x ,
      'y': height.y + y
    })
@@ -77,16 +77,17 @@ function draw() {
    height = data.val();
    balloon.x = height.x;
    balloon.y = height.y;
- }
+}
 
 // function readHeight(data){
 //   height = data.val();
 // }
 
-//function readHeight(){
-   //balloon.x = height.x;
-   //balloon.y = height.y;
- //}
+// function readHeight(){
+//   height = val();
+//   balloon.x = height.x;
+//   balloon.y = height.y;
+// }
 
 function showError(){
   console.log("Error in writing to the database");
