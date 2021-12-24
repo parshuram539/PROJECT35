@@ -1,12 +1,12 @@
 var balloon,balloonImage1,balloonImage2;
 var database;
 var height;
+var bg;
 
 function preload(){
-   bg =loadImage("Images/cityImage.png");
-   balloonImage1=loadAnimation("Images/HotAirBallon01.png");
-   balloonImage2=loadAnimation("Images/HotAirBallon01.png","Images/HotAirBallon01.png",
-   "Images/HotAirBallon01.png","Images/HotAirBallon02.png","Images/HotAirBallon02.png",
+  bg =loadImage("Images/cityImage.png");
+  balloonImage1=loadAnimation("Images/HotAirBallon01.png");
+  balloonImage2=loadAnimation("Images/HotAirBallon01.png","Images/HotAirBallon01.png", "Images/HotAirBallon01.png","Images/HotAirBallon02.png","Images/HotAirBallon02.png",
    "Images/HotAirBallon02.png","Images/HotAirBallon03.png","Images/HotAirBallon03.png","Images/HotAirBallon03.png");
   }
 
@@ -18,7 +18,7 @@ function setup() {
   createCanvas(1500,700);
 
   balloon=createSprite(250,650,150,150);
-  balloon.addAnimation("hotAirBalloon",balloonImage1);
+  balloon.addAnimation("hotAirBallon",balloonImage1);
   balloon.scale=0.5;
 
   var balloonHeight=database.ref('balloon/height');
@@ -35,20 +35,20 @@ function draw() {
 
   if(keyDown(LEFT_ARROW)){
     updateHeight(-10,0);
-    balloon.addAnimation("hotAirBalloon",balloonImage2);
+    balloon.addAnimation("hotAirBallon",balloonImage2);
   }
   else if(keyDown(RIGHT_ARROW)){
     updateHeight(10,0);
-    balloon.addAnimation("hotAirBalloon",balloonImage2);
+    balloon.addAnimation("hotAirBallon",balloonImage2);
   }
   else if(keyDown(UP_ARROW)){
     updateHeight(0,-10);
-    balloon.addAnimation("hotAirBalloon",balloonImage2);
+    balloon.addAnimation("hotAirBallon",balloonImage2);
     balloon.scale=balloon.scale -0.005;
   }
   else if(keyDown(DOWN_ARROW)){
     updateHeight(0,+10);
-    balloon.addAnimation("hotAirBalloon",balloonImage2);
+    balloon.addAnimation("hotAirBallon",balloonImage2);
     balloon.scale=balloon.scale+0.005;
   }
 
